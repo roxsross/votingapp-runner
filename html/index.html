@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Voting Application Demo</title>
+    <meta name="description" content="Voting Application Demo">
+    <meta name="author" content="@roxsross">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+
+<body>
+    <div id='v_app'>
+        <section class="hero is-primary is-bold">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <img src="./static/295-full-website-banner-transparent-white.png" alt="Banner" style="max-width: 200px;">
+                    <h1 class="title is-1">AWS ECS | DEMO 🔥</h1>
+                    <h2 class='subtitle is-3'>Voting Application Demo by @roxsross</h2>
+                </div>
+            </div>
+        </section>
+        <section style='margin-top:40px;'>
+            <div class='columns'>
+                <div class='column is-offset-2'>
+                    <div class='columns'>
+                        <div class='column is-5' v-for="opt in options" style='text-align:center;'>
+                            <div class="card" style='height:100%'>
+                                <div class="card-image">
+                                    <img :src="opt.image" alt="Placeholder image" width="640px">
+                                    <p v-html="opt.image_copyright"></p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="content">
+                                        <div class='title is-4'>
+                                            [[ opt.name ]]
+                                        </div>
+                                        <div v-if="showResult" class='title has-background-link-dark has-text-white-ter' style='width: 50%;text-align: center;
+                                            border-radius: 5px;
+                                            margin: auto;
+                                            margin-bottom: 30px;
+                                            padding: 5px 0px 5px 0px;'>
+                                            [[ opt.votes ]] VOTES
+                                        </div>
+                                        <div class=''>
+                                            <button @click="vote(opt.ID)" class='button is-warning'><b>VOTE</b></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type='text/javascript'>
+        var app = new Vue({
+            el: "#v_app",
+            delimiters: ['[[', ']]'],
+            data: {
+                url_api_options: '/api/options',
+                options: [],
+                showResult: false,
+            },
+            methods: {
+                vote: function(id) {
+                    var self = this;
+                    axios({
+                        method: 'post',
+                        url: this.url_api_options,
+                        data: {
+                            ID: id
+                        }
+                    })
+                    .then(self.show);
+                },
+                show: function() {
+                    var self = this;
+                    self.getOptions();
+                    self.showResult = true;
+                },
+                getOptions: function() {
+                    var self = this;
+                    axios.get(self.url_api_options).then((response) => {
+                        if (response.status == 200) {
+                            self.options = response.data;
+                        }
+                    });
+                }
+            },
+            mounted: function() {
+                var self = this;
+                self.getOptions();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
