@@ -1,0 +1,46 @@
+{
+    "apprunner-demo-data": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "ID": {
+                        "S": "1"
+                    },
+                    "image": {
+                        "S": "/static/ecs.jpg"
+                    },
+                    "image_copyright": {
+                        "S": "Photo by <a href=\"https://aws.amazon.com/es/ecs/\">AWS</a> on <a href=\"https://aws.amazon.com/es/ecs/getting-started/?pg=ln&cp=bn\">getting-started</a>"
+                    },
+                    "name": {
+                        "S": "AWS ECS"
+                    },
+                    "votes": {
+                        "N": "0"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ID": {
+                        "S": "2"
+                    },
+                    "image": {
+                        "S": "/static/eks.jpg"
+                    },
+                    "image_copyright": {
+                        "S": "Photo by <a href=\"https://aws.amazon.com/es/eks/\">AWS</a> on <a href=\"https://aws.amazon.com/es/eks/features/\">getting-started</a>"
+                    },
+                    "name": {
+                        "S": "AWS EKS"
+                    },
+                    "votes": {
+                        "N": "0"
+                    }
+                }
+            }
+        }
+    ]
+}

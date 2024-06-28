@@ -1,0 +1,55 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "vote",
+            "image": "459137896070.dkr.ecr.us-east-1.amazonaws.com/votingapp:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "9090",
+                    "containerPort": 9090,
+                    "hostPort": 9090,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "APP_AWS_REGION",
+                    "value": "us-east-1"
+                },
+                {
+                    "name": "APP_MODE",
+                    "value": "PROD"
+                },
+                {
+                    "name": "APP_DDB_TABLE_NAME",
+                    "value": "apprunner-demo-data"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/votingapp",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "family": "votingapp-task",
+    "taskRoleArn": "arn:aws:iam::459137896070:role/ecs-roxs-role",
+    "executionRoleArn": "arn:aws:iam::459137896070:role/ecs-roxs-role",
+    "networkMode": "awsvpc",
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512"
+}
