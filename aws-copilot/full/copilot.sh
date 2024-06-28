@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Var
-NAME_APP=awsomeweb
+NAME_APP=aws
 ENV=develop
 
 #copilot app init crea una nueva aplicación dentro del directorio que contendrá su(s) servicio(s).
