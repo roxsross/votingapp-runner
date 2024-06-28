@@ -51,7 +51,7 @@ El archivo `app.py` sirve como núcleo de esta aplicación web construida con Fl
 - **APP_PORT**: Define el puerto en el que se ejecutará la aplicación Flask. Por defecto, es 9090.
 - **APP_MODE**: Indica el modo de ejecución de la aplicación, ya sea 'LOCAL' para DynamoDB local o 'PRODUCTION' para AWS.
 
-## Configuración de Assets
+## Configuración de Imágenes
 
 En la carpeta `html/static`, puedes agregar nuevas imágenes que desees relacionar con los elementos que se muestran en la aplicación. Simplemente coloca las imágenes en esta carpeta y asegúrate de referenciarlas correctamente en la dynamodb
 
