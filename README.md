@@ -102,6 +102,14 @@ Se configura un logger para registrar información relevante durante la ejecuci�
 
 3. **Configuración de DynamoDB Local:**
     - Configura un contenedor con DynamoDB Local. Consulta la [documentación oficial de AWS](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html).
+    - Credenciales FAKE en .aws/credentials
+   ```
+   [default]
+    aws_access_key_id=fake
+    aws_secret_access_key=fake
+    region=us-east-1
+
+   ```
 
     ```yaml
     version: '3.8'
